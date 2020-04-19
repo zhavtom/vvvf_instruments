@@ -11,7 +11,7 @@ fphs = checkbox("Full Phases");
 mf = hslider("Mod Freq", 0, 0, 100, 0.01) * ba.if(sync, freq/100, 1);
 mlv = hslider("Mod Level", 0, 0, 100, 0.01)/100;
 cff = hslider("Car Freq Factor", 0, 0, 100, 0.01)/100;
-cf = ba.if(sync, (floor(cff*14)*2+1)*mf, freq*2^floor(cff*3));
+cf = ba.if(sync, (floor(cff*14)*2+1)*mf, freq*2^(cff*3));
 
 phasor(freq) = (+(freq/ma.SR) ~ ma.decimal);
 
