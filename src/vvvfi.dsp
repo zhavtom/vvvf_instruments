@@ -3,8 +3,8 @@ import("stdfaust.lib");
 sgn = _ <: >(0) - <(0);
 rnd = (no.noise-0.5)*hslider("Random Mod", 0, 0, 100, 0.01)*20;
 
-freq = hslider("freq", 1, 1, 1, 1);
-gate = hslider("gate", 1, 1, 1, 1);
+freq = hslider("freq", 440, 1, 4000, 1);
+gate = button("gate");
 
 ssp = os.osc(freq/2)*checkbox("Spectrum Spread")*15;
 
