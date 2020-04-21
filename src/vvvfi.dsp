@@ -2,13 +2,12 @@ import("stdfaust.lib");
 
 sgn = _ <: >(0) - <(0);
 rnd = hslider("rnd", 0, 0, 100, 0.01);
-rndmod = (no.noise-0.5)*rnd*15;
+rndmod = (no.noise-0.5)*rnd*20;
 
 freq = hslider("freq", 440, 1, 4000, 1);
 gate = button("gate");
 
 ssp = checkbox("ssp");
-spctspr = os.osc(freq/2)*ssp*15;
 
 sync = checkbox("sync");
 fphs = checkbox("fphs");
@@ -17,6 +16,8 @@ mf = mff * ba.if(sync, freq/100, 1);
 mlv = hslider("mlv", 0, 0, 100, 0.01)/100;
 cff = hslider("cff", 0, 0, 100, 0.01)/100;
 cf = ba.if(sync, (floor(cff^2*14)*2+1)*mf, freq*2^(cff*3));
+
+spctspr = os.osc((freq+cf)/8)*ssp*20;
 
 phasor(freq) = (+(freq/ma.SR) ~ ma.decimal);
 
