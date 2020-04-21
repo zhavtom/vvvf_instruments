@@ -1,23 +1,26 @@
 import("stdfaust.lib");
 
 sgn = _ <: >(0) - <(0);
-rnd = (no.noise-0.5)*hslider("Random Mod", 0, 0, 100, 0.01)*20;
+rnd = hslider("rnd", 0, 0, 100, 0.01);
+rndmod = (no.noise-0.5)*rnd*15;
 
 freq = hslider("freq", 440, 1, 4000, 1);
 gate = button("gate");
 
-ssp = os.osc(freq/2)*checkbox("Spectrum Spread")*15;
+ssp = checkbox("ssp");
+spctspr = os.osc(freq/2)*ssp*15;
 
-sync = checkbox("Sync");
-fphs = checkbox("Full Phases");
-mf = hslider("Mod Freq", 0, 0, 100, 0.01) * ba.if(sync, freq/100, 1);
-mlv = hslider("Mod Level", 0, 0, 100, 0.01)/100;
-cff = hslider("Car Freq Factor", 0, 0, 100, 0.01)/100;
+sync = checkbox("sync");
+fphs = checkbox("fphs");
+mff = hslider("mff", 0, 0, 100, 0.01);
+mf = mff * ba.if(sync, freq/100, 1);
+mlv = hslider("mlv", 0, 0, 100, 0.01)/100;
+cff = hslider("cff", 0, 0, 100, 0.01)/100;
 cf = ba.if(sync, (floor(cff^2*14)*2+1)*mf, freq*2^(cff*3));
 
 phasor(freq) = (+(freq/ma.SR) ~ ma.decimal);
 
-car_osc = sin(phasor(cf+rnd+ssp)*(ma.PI*2)) * -1;
+car_osc = sin(phasor(cf+rndmod+spctspr)*(ma.PI*2)) * -1;
 mod_osc(freq, ph) = sin((ph+phasor(freq))*(ma.PI*2)) * mlv;
 
 vlt1 = sgn(mod_osc(mf, 0)-car_osc);
