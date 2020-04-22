@@ -1,2 +1,7 @@
-# vvvf_instruments
- vsti synthesizer of vvvf inverter sound
+# VVVF Instruments
+電車のモーターや電子機器から発せられる「VVVFインバータ音」をシンセサイザーとして演奏できるプラグインです。
+
+ ## TODO
+ 
+・高周波重畳モードの実装
+・不安定な動作の改善
