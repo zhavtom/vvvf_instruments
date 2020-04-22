@@ -13049,15 +13049,15 @@ class mydsp : public dsp {
 	
 	virtual void buildUserInterface(UI* ui_interface) {
 		ui_interface->openVerticalBox("vvvfi");
-		ui_interface->addHorizontalSlider("cff", &fHslider3, 30.0f, 0.0f, 100.0f, 0.00999999978f);
-		ui_interface->addCheckButton("fphs", &fCheckbox0);
+		ui_interface->addHorizontalSlider("Signal Freq Factor", &fHslider3, 30.0f, 0.0f, 100.0f, 0.00999999978f);
+		ui_interface->addCheckButton("Full Phases", &fCheckbox0);
 		ui_interface->addHorizontalSlider("freq", &fHslider2, 440.0f, 1.0f, 4000.0f, 1.0f);
 		ui_interface->addButton("gate", &fButton0);
-		ui_interface->addHorizontalSlider("mff", &fHslider1, 0.0f, 0.0f, 100.0f, 0.00999999978f);
-		ui_interface->addHorizontalSlider("mlv", &fHslider0, 0.0f, 0.0f, 100.0f, 0.00999999978f);
-		ui_interface->addHorizontalSlider("rnd", &fHslider4, 0.0f, 0.0f, 100.0f, 0.00999999978f);
-		ui_interface->addCheckButton("ssp", &fCheckbox2);
-		ui_interface->addCheckButton("sync", &fCheckbox1);
+		ui_interface->addHorizontalSlider("Mod Freq Factor", &fHslider1, 0.0f, 0.0f, 100.0f, 0.00999999978f);
+		ui_interface->addHorizontalSlider("Mod Level", &fHslider0, 0.0f, 0.0f, 100.0f, 0.00999999978f);
+		ui_interface->addHorizontalSlider("Random Mod", &fHslider4, 0.0f, 0.0f, 100.0f, 0.00999999978f);
+		ui_interface->addCheckButton("Spectrum\nSpread", &fCheckbox2);
+		ui_interface->addCheckButton("Sync", &fCheckbox1);
 		ui_interface->closeBox();
 	}
 	

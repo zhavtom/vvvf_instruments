@@ -332,7 +332,7 @@
  #define JucePlugin_Enable_IAA             0
 #endif
 #ifndef  JucePlugin_Name
- #define JucePlugin_Name                   "vvvfi"
+ #define JucePlugin_Name                   "VVVF_Instruments"
 #endif
 #ifndef  JucePlugin_Desc
  #define JucePlugin_Desc                   "vvvfi"
@@ -443,7 +443,7 @@
  #define JucePlugin_IAASubType             JucePlugin_PluginCode
 #endif
 #ifndef  JucePlugin_IAAName
- #define JucePlugin_IAAName                "Zhavtom: vvvfi"
+ #define JucePlugin_IAAName                "Zhavtom: VVVF_Instruments"
 #endif
 #ifndef  JucePlugin_VSTNumMidiInputs
  #define JucePlugin_VSTNumMidiInputs       16
