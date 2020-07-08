@@ -23,9 +23,7 @@ android {
         targetSdkVersion 28
         externalNativeBuild {
             cmake {
-                arguments "-DANDROID_TOOLCHAIN=clang", "-DANDROID_PLATFORM=android-16", "-DANDROID_STL=c++_static", "-DANDROID_CPP_FEATURES=exceptions rtti", "-DANDROID_ARM_MODE=arm", "-DANDROID_ARM_NEON=TRUE"
-                cFlags "-fsigned-char", "-I", "/usr/local/include/", "-DNVOICES=16", "-DFAUSTFLOAT=float"
-                cppFlags "-fsigned-char", "-std=c++14", "-I", "/usr/local/include/", "-DNVOICES=16", "-DFAUSTFLOAT=float"
+                arguments "-DANDROID_TOOLCHAIN=clang", "-DANDROID_PLATFORM=android-16", "-DANDROID_STL=c++_static", "-DANDROID_CPP_FEATURES=exceptions rtti", "-DANDROID_ARM_MODE=arm", "-DANDROID_ARM_NEON=TRUE", "-DCMAKE_CXX_STANDARD=14", "-DCMAKE_CXX_EXTENSIONS=OFF"
             }
         }
     }
@@ -84,10 +82,9 @@ android {
 
     sourceSets {
         main.java.srcDirs +=
-            ["C:/JUCE/modules/juce_core/native/javacore/init",
-             "C:/JUCE/modules/juce_core/native/javacore/app",
-             "C:/JUCE/modules/juce_gui_basics/native/javacore/app",
-             "C:/JUCE/modules/juce_gui_basics/native/javaopt/app"]
+            ["../../../../../../../../JUCE/modules/juce_core/native/javacore/init",
+             "../../../../../../../../JUCE/modules/juce_core/native/javacore/app",
+             "../../../../../../../../JUCE/modules/juce_gui_basics/native/javaopt/app"]
 
         main.res.srcDirs +=
             []

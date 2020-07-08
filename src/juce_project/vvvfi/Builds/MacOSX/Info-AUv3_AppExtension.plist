@@ -8,11 +8,11 @@
     <key>CFBundleIconFile</key>
     <string></string>
     <key>CFBundleIdentifier</key>
-    <string>jp.zhavtom.vvvfi.vvvfiAUv3</string>
+    <string>com.grame.vvvfi.vvvfiAUv3</string>
     <key>CFBundleName</key>
-    <string>VVVF_Instruments</string>
+    <string>vvvfi</string>
     <key>CFBundleDisplayName</key>
-    <string>VVVF_Instruments</string>
+    <string>vvvfi</string>
     <key>CFBundlePackageType</key>
     <string>XPC!</string>
     <key>CFBundleSignature</key>
@@ -37,7 +37,7 @@
         <array>
           <dict>
             <key>name</key>
-            <string>Zhavtom: VVVF_Instruments</string>
+            <string>GRAME: vvvfi</string>
             <key>description</key>
             <string>vvvfi</string>
             <key>factoryFunction</key>
@@ -45,16 +45,16 @@
             <key>manufacturer</key>
             <string>Manu</string>
             <key>type</key>
-            <string>aumu</string>
+            <string>aumf</string>
             <key>subtype</key>
-            <string>f540</string>
+            <string>3243</string>
             <key>version</key>
             <integer>65536</integer>
             <key>sandboxSafe</key>
             <true/>
             <key>tags</key>
             <array>
-              <string>Synth</string>
+              <string>Effects</string>
             </array>
           </dict>
         </array>

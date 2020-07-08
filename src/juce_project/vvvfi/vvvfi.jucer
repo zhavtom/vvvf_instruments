@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<JUCERPROJECT id="L9dULy" name="VVVF_Instruments" projectType="audioplug" version="1.0.0"
+<JUCERPROJECT id="L9dULy" name="VVVF_Instruments" projectType="audioplug" version="0.2.0"
               bundleIdentifier="jp.zhavtom.vvvfi" includeBinaryInAppConfig="1"
-              buildVST="0" buildVST3="1" buildAU="1" buildAUv3="1" buildRTAS="0"
-              buildAAX="0" buildStandalone="1" pluginName="VVVF_Instruments"
-              pluginDesc="vvvfi" pluginManufacturer="Zhavtom" pluginManufacturerCode="Manu"
-              pluginCode="f540" pluginChannelConfigs="" pluginIsSynth="1" pluginWantsMidiIn="1"
+              buildVST="1" buildVST3="1" buildAU="0" buildAUv3="0" buildRTAS="0"
+              buildAAX="0" buildStandalone="1" pluginName="vvvfi" pluginDesc="vvvfi"
+              pluginManufacturer="ZHAVTOM" pluginManufacturerCode="zhvf" pluginCode="3243"
+              pluginChannelConfigs="" pluginIsSynth="1" pluginWantsMidiIn="1"
               pluginProducesMidiOut="0" pluginIsMidiEffectPlugin="0" pluginEditorRequiresKeys="0"
-              pluginAUExportPrefix="vvvfiAU" pluginRTASCategory="" aaxIdentifier="com.grame.vvvfi"
-              pluginAAXCategory="2" jucerVersion="5.4.7" pluginFormats="buildAU,buildAUv3,buildStandalone,buildVST3"
+              pluginAUExportPrefix="vvvfiAU" pluginRTASCategory="" aaxIdentifier="jp.zhavtom.vvvfi"
+              pluginAAXCategory="2" pluginFormats="buildStandalone,buildVST,buildVST3"
               pluginCharacteristicsValue="pluginIsSynth,pluginWantsMidiIn"
-              enableIAA="0" pluginRTASDisableBypass="0" pluginRTASDisableMultiMono="0"
-              pluginAAXDisableBypass="0" pluginAAXDisableMultiMono="0">
+              jucerFormatVersion="1" pluginRTASDisableBypass="0" pluginRTASDisableMultiMono="0"
+              pluginAAXDisableBypass="0" pluginAAXDisableMultiMono="0" enableIAA="0">
   <MAINGROUP id="DIThxi" name="VVVF_Instruments">
     <GROUP id="{3EA8B881-7A5A-9E29-6E83-82528C15E424}" name="Source">
       <FILE id="BecAMR" name="FaustPluginProcessor.cpp" compile="1" resource="0"
@@ -20,7 +20,7 @@
   </MAINGROUP>
   <EXPORTFORMATS>
     <XCODE_MAC targetFolder="Builds/MacOSX" extraCompilerFlags="-I /usr/local/include/ -DNVOICES=16 -DFAUSTFLOAT=float"
-               extraDefs="MIDICTRL JUCE_POLY ">
+               extraDefs="MIDICTRL JUCE_POLY OSCCTRL ">
       <CONFIGURATIONS>
         <CONFIGURATION name="Debug" isDebug="1" optimisation="1" targetName="vvvfi"/>
         <CONFIGURATION name="Release" isDebug="0" optimisation="3" targetName="vvvfi"/>
@@ -34,7 +34,7 @@
         <MODULEPATH id="juce_gui_basics" path="../../modules"/>
         <MODULEPATH id="juce_gui_extra" path="../../modules"/>
         <MODULEPATH id="juce_opengl" path="../../modules"/>
-        <MODULEPATH id="juce_audio_basics" path="../../modules"/>
+        <MODULEPATH id="juce_audio_basics" path="../../../../../JUCE/modules"/>
         <MODULEPATH id="juce_audio_devices" path="../../modules"/>
         <MODULEPATH id="juce_audio_formats" path="../../modules"/>
         <MODULEPATH id="juce_audio_processors" path="../../modules"/>
@@ -42,30 +42,7 @@
         <MODULEPATH id="juce_osc" path="../../modules"/>
       </MODULEPATHS>
     </XCODE_MAC>
-    <XCODE_IPHONE targetFolder="Builds/iOS" iosScreenOrientation="portraitlandscape"
-                  extraDefs="MIDICTRL JUCE_POLY " extraCompilerFlags="-I /usr/local/include/ -DNVOICES=16 -DFAUSTFLOAT=float">
-      <CONFIGURATIONS>
-        <CONFIGURATION name="Debug" isDebug="1" optimisation="1" targetName="vvvfi"/>
-        <CONFIGURATION name="Release" isDebug="0" optimisation="3" targetName="vvvfi"/>
-      </CONFIGURATIONS>
-      <MODULEPATHS>
-        <MODULEPATH id="juce_audio_utils" path="../../modules"/>
-        <MODULEPATH id="juce_opengl" path="../../modules"/>
-        <MODULEPATH id="juce_gui_extra" path="../../modules"/>
-        <MODULEPATH id="juce_gui_basics" path="../../modules"/>
-        <MODULEPATH id="juce_graphics" path="../../modules"/>
-        <MODULEPATH id="juce_events" path="../../modules"/>
-        <MODULEPATH id="juce_data_structures" path="../../modules"/>
-        <MODULEPATH id="juce_core" path="../../modules"/>
-        <MODULEPATH id="juce_audio_processors" path="../../modules"/>
-        <MODULEPATH id="juce_audio_plugin_client" path="../../modules"/>
-        <MODULEPATH id="juce_audio_formats" path="../../modules"/>
-        <MODULEPATH id="juce_audio_devices" path="../../modules"/>
-        <MODULEPATH id="juce_audio_basics" path="../../modules"/>
-        <MODULEPATH id="juce_osc" path="../../modules"/>
-      </MODULEPATHS>
-    </XCODE_IPHONE>
-    <VS2015 targetFolder="Builds/VisualStudio2015" extraDefs="MIDICTRL JUCE_POLY ">
+    <VS2015 targetFolder="Builds/VisualStudio2015" extraDefs="MIDICTRL JUCE_POLY OSCCTRL ">
       <CONFIGURATIONS>
         <CONFIGURATION name="Debug" winWarningLevel="4" generateManifest="1" winArchitecture="32-bit"
                        isDebug="1" optimisation="1" targetName="vvvfi"/>
@@ -89,7 +66,7 @@
         <MODULEPATH id="juce_osc" path="../../modules"/>
       </MODULEPATHS>
     </VS2015>
-    <LINUX_MAKE targetFolder="Builds/LinuxMakefile" extraDefs="MIDICTRL JUCE_POLY "
+    <LINUX_MAKE targetFolder="Builds/LinuxMakefile" extraDefs="MIDICTRL JUCE_POLY OSCCTRL "
                 extraCompilerFlags="-I /usr/local/include/ -DNVOICES=16 -DFAUSTFLOAT=float">
       <CONFIGURATIONS>
         <CONFIGURATION name="Debug" isDebug="1" optimisation="1" targetName="vvvfi"/>
@@ -112,7 +89,7 @@
         <MODULEPATH id="juce_osc" path="../../modules"/>
       </MODULEPATHS>
     </LINUX_MAKE>
-    <ANDROIDSTUDIO targetFolder="Builds/Android" extraDefs="MIDICTRL JUCE_POLY "
+    <ANDROIDSTUDIO targetFolder="Builds/Android" extraDefs="MIDICTRL JUCE_POLY OSCCTRL "
                    extraCompilerFlags="-I /usr/local/include/ -DNVOICES=16 -DFAUSTFLOAT=float">
       <CONFIGURATIONS>
         <CONFIGURATION name="Debug" androidArchitectures="armeabi x86" isDebug="1" optimisation="1"
@@ -137,47 +114,26 @@
         <MODULEPATH id="juce_osc" path="../../modules"/>
       </MODULEPATHS>
     </ANDROIDSTUDIO>
-    <VS2019 targetFolder="Builds/VisualStudio2019">
-      <CONFIGURATIONS>
-        <CONFIGURATION isDebug="1" name="Debug"/>
-        <CONFIGURATION isDebug="0" name="Release"/>
-      </CONFIGURATIONS>
-      <MODULEPATHS>
-        <MODULEPATH id="juce_osc"/>
-        <MODULEPATH id="juce_opengl"/>
-        <MODULEPATH id="juce_gui_extra"/>
-        <MODULEPATH id="juce_gui_basics"/>
-        <MODULEPATH id="juce_graphics"/>
-        <MODULEPATH id="juce_events"/>
-        <MODULEPATH id="juce_data_structures"/>
-        <MODULEPATH id="juce_core"/>
-        <MODULEPATH id="juce_audio_utils"/>
-        <MODULEPATH id="juce_audio_processors"/>
-        <MODULEPATH id="juce_audio_plugin_client"/>
-        <MODULEPATH id="juce_audio_formats"/>
-        <MODULEPATH id="juce_audio_devices"/>
-        <MODULEPATH id="juce_audio_basics"/>
-      </MODULEPATHS>
-    </VS2019>
   </EXPORTFORMATS>
   <MODULES>
-    <MODULE id="juce_audio_basics" showAllCode="1" useLocalCopy="0"/>
-    <MODULE id="juce_audio_devices" showAllCode="1" useLocalCopy="0"/>
-    <MODULE id="juce_audio_formats" showAllCode="1" useLocalCopy="0"/>
-    <MODULE id="juce_audio_plugin_client" showAllCode="1" useLocalCopy="0"/>
-    <MODULE id="juce_audio_processors" showAllCode="1" useLocalCopy="0"/>
-    <MODULE id="juce_audio_utils" showAllCode="1" useLocalCopy="0"/>
-    <MODULE id="juce_core" showAllCode="1" useLocalCopy="0"/>
-    <MODULE id="juce_data_structures" showAllCode="1" useLocalCopy="0"/>
-    <MODULE id="juce_events" showAllCode="1" useLocalCopy="0"/>
-    <MODULE id="juce_graphics" showAllCode="1" useLocalCopy="0"/>
-    <MODULE id="juce_gui_basics" showAllCode="1" useLocalCopy="0"/>
-    <MODULE id="juce_gui_extra" showAllCode="1" useLocalCopy="0"/>
-    <MODULE id="juce_opengl" showAllCode="1" useLocalCopy="0"/>
-    <MODULE id="juce_osc" showAllCode="1" useLocalCopy="0"/>
+    <MODULE id="juce_audio_basics" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_audio_devices" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_audio_formats" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_audio_plugin_client" showAllCode="1" useLocalCopy="0"
+            useGlobalPath="1"/>
+    <MODULE id="juce_audio_processors" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_audio_utils" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_core" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_data_structures" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_events" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_graphics" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_gui_basics" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_gui_extra" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_opengl" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_osc" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
   </MODULES>
   <JUCEOPTIONS JUCE_QUICKTIME="disabled"/>
   <LIVE_SETTINGS>
-    <WINDOWS/>
+    <OSX/>
   </LIVE_SETTINGS>
 </JUCERPROJECT>
