@@ -41,7 +41,7 @@
  #define JucePlugin_Name                   "VVVF Instruments"
 #endif
 #ifndef  JucePlugin_Desc
- #define JucePlugin_Desc                   "vvvfi"
+ #define JucePlugin_Desc                   "VVVF Instruments"
 #endif
 #ifndef  JucePlugin_Manufacturer
  #define JucePlugin_Manufacturer           "ZHAVTOM"

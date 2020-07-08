@@ -4,7 +4,7 @@
               bundleIdentifier="jp.zhavtom.vvvfi" includeBinaryInAppConfig="1"
               buildVST="1" buildVST3="1" buildAU="0" buildAUv3="0" buildRTAS="0"
               buildAAX="0" buildStandalone="1" pluginName="VVVF Instruments"
-              pluginDesc="vvvfi" pluginManufacturer="ZHAVTOM" pluginManufacturerCode="zhvf"
+              pluginDesc="VVVF Instruments" pluginManufacturer="ZHAVTOM" pluginManufacturerCode="zhvf"
               pluginCode="3243" pluginChannelConfigs="" pluginIsSynth="1" pluginWantsMidiIn="1"
               pluginProducesMidiOut="0" pluginIsMidiEffectPlugin="0" pluginEditorRequiresKeys="0"
               pluginAUExportPrefix="vvvfiAU" pluginRTASCategory="" aaxIdentifier="jp.zhavtom.vvvfi"
