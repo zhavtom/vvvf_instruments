@@ -22,8 +22,8 @@
     <XCODE_MAC targetFolder="Builds/MacOSX" extraCompilerFlags="-I /usr/local/include/ -DNVOICES=16 -DFAUSTFLOAT=float"
                extraDefs="MIDICTRL JUCE_POLY OSCCTRL ">
       <CONFIGURATIONS>
-        <CONFIGURATION name="Debug" isDebug="1" optimisation="1" targetName="vvvfi"/>
-        <CONFIGURATION name="Release" isDebug="0" optimisation="3" targetName="vvvfi"/>
+        <CONFIGURATION name="Debug" isDebug="1" optimisation="1" targetName="VVVF Instruments"/>
+        <CONFIGURATION name="Release" isDebug="0" optimisation="3" targetName="VVVF Instruments"/>
       </CONFIGURATIONS>
       <MODULEPATHS>
         <MODULEPATH id="juce_audio_utils" path="../../modules"/>
@@ -44,10 +44,10 @@
     </XCODE_MAC>
     <VS2015 targetFolder="Builds/VisualStudio2015" extraDefs="MIDICTRL JUCE_POLY OSCCTRL ">
       <CONFIGURATIONS>
-        <CONFIGURATION name="Debug" winWarningLevel="4" generateManifest="1" winArchitecture="32-bit"
-                       isDebug="1" optimisation="1" targetName="vvvfi"/>
-        <CONFIGURATION name="Release" winWarningLevel="4" generateManifest="1" winArchitecture="32-bit"
-                       isDebug="0" optimisation="3" targetName="vvvfi"/>
+        <CONFIGURATION name="Debug" winWarningLevel="4" generateManifest="1" winArchitecture="x64"
+                       isDebug="1" optimisation="1" targetName="VVVF Instruments"/>
+        <CONFIGURATION name="Release" winWarningLevel="4" generateManifest="1" winArchitecture="x64"
+                       isDebug="0" optimisation="3" targetName="VVVF Instruments"/>
       </CONFIGURATIONS>
       <MODULEPATHS>
         <MODULEPATH id="juce_audio_utils" path="../../modules"/>
@@ -135,5 +135,6 @@
   <JUCEOPTIONS JUCE_QUICKTIME="disabled" JUCE_VST3_CAN_REPLACE_VST2="0"/>
   <LIVE_SETTINGS>
     <OSX/>
+    <WINDOWS/>
   </LIVE_SETTINGS>
 </JUCERPROJECT>

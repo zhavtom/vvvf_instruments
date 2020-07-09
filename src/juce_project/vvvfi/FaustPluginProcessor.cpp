@@ -4592,6 +4592,8 @@ struct DatedMessage {
 * Helper code for MIDI meta and polyphonic 'nvoices' parsing
 ******************************************************************************/
 
+#define NVOICES 12
+
 struct MidiMeta : public Meta, public std::map<std::string, std::string> {
     
     void declare(const char* key, const char* value)
@@ -12687,6 +12689,8 @@ class JuceOSCUI : private OSCReceiver, private OSCReceiver::Listener<OSCReceiver
 
 /**************************  END  JuceOSCUI.h **************************/
 #endif
+
+#define MIDICTRL 1
 
 #if defined(MIDICTRL)
 /************************** BEGIN juce-midi.h **************************/
