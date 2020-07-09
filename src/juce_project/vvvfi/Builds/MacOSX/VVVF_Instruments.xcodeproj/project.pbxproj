@@ -192,7 +192,7 @@
 		E4B6CA02C0AD53DEB1776A48 /* include_juce_audio_formats.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; name = include_juce_audio_formats.mm; path = ../../JuceLibraryCode/include_juce_audio_formats.mm; sourceTree = SOURCE_ROOT; };
 		F148E1C8BBBE1C3A7C733BCB /* JucePluginDefines.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = JucePluginDefines.h; path = ../../JuceLibraryCode/JucePluginDefines.h; sourceTree = SOURCE_ROOT; };
 		F8881A8F9802A491C2D7D752 /* include_juce_audio_basics.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; name = include_juce_audio_basics.mm; path = ../../JuceLibraryCode/include_juce_audio_basics.mm; sourceTree = SOURCE_ROOT; };
-		FB8DCA78F0225DA57843F35E /* libVVVF Instruments.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libVVVF Instruments.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		FB8DCA78F0225DA57843F35E /* libvvvfi.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libvvvfi.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -283,7 +283,7 @@
 				DCFF517A6EF1FECCA39296B9 /* VVVF Instruments.vst */,
 				60175178D5095381D18B0203 /* VVVF Instruments.vst3 */,
 				0D2E4A13B5785619B35A727C /* VVVF Instruments.app */,
-				FB8DCA78F0225DA57843F35E /* libVVVF Instruments.a */,
+				FB8DCA78F0225DA57843F35E /* libvvvfi.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -426,7 +426,7 @@
 			);
 			name = "VVVF_Instruments - Shared Code";
 			productName = VVVF_Instruments;
-			productReference = FB8DCA78F0225DA57843F35E /* libVVVF Instruments.a */;
+			productReference = FB8DCA78F0225DA57843F35E /* libvvvfi.a */;
 			productType = "com.apple.product-type.library.static";
 		};
 		944989BDD21391A90A3A779B /* VVVF_Instruments - VST */ = {
@@ -755,7 +755,7 @@
 					"-DFAUSTFLOAT=float",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = jp.zhavtom.vvvfi;
-				PRODUCT_NAME = "VVVF Instruments";
+				PRODUCT_NAME = vvvfi;
 				SKIP_INSTALL = YES;
 				USE_HEADERMAP = NO;
 			};
@@ -874,7 +874,7 @@
 					"-DFAUSTFLOAT=float",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = jp.zhavtom.vvvfi;
-				PRODUCT_NAME = "VVVF Instruments";
+				PRODUCT_NAME = vvvfi;
 				SKIP_INSTALL = YES;
 				USE_HEADERMAP = NO;
 			};
