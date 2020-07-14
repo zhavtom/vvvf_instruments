@@ -4588,6 +4588,8 @@ struct DatedMessage {
 #define gsscanf sscanf
 #endif
 
+#define NVOICES 12
+
 /*****************************************************************************
 * Helper code for MIDI meta and polyphonic 'nvoices' parsing
 ******************************************************************************/
@@ -12688,6 +12690,8 @@ class JuceOSCUI : private OSCReceiver, private OSCReceiver::Listener<OSCReceiver
 /**************************  END  JuceOSCUI.h **************************/
 #endif
 
+#define MIDICTRL 1
+
 #if defined(MIDICTRL)
 /************************** BEGIN juce-midi.h **************************/
 /************************************************************************
@@ -13400,7 +13404,7 @@ class mydsp : public dsp {
 		m->declare("maths.lib/license", "LGPL with exception");
 		m->declare("maths.lib/name", "Faust Math Library");
 		m->declare("maths.lib/version", "2.3");
-		m->declare("name", "VVVF Instruments");
+		m->declare("name", "vvvfi");
 		m->declare("noises.lib/name", "Faust Noise Generator Library");
 		m->declare("noises.lib/version", "0.0");
 		m->declare("oscillators.lib/name", "Faust Oscillator Library");
