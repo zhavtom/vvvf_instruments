@@ -4588,6 +4588,8 @@ struct DatedMessage {
 #define gsscanf sscanf
 #endif
 
+#define NVOICES 12
+
 /*****************************************************************************
 * Helper code for MIDI meta and polyphonic 'nvoices' parsing
 ******************************************************************************/
@@ -12687,6 +12689,8 @@ class JuceOSCUI : private OSCReceiver, private OSCReceiver::Listener<OSCReceiver
 
 /**************************  END  JuceOSCUI.h **************************/
 #endif
+
+#define MIDICTRL 1
 
 #if defined(MIDICTRL)
 /************************** BEGIN juce-midi.h **************************/
