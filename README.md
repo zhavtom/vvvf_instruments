@@ -20,6 +20,7 @@ VST3あり
 ## Windows 10
 - FL Studio 20
 - vsthost
+- REAPER
 
 ## macOS Catalina
 - FL Studio 20
