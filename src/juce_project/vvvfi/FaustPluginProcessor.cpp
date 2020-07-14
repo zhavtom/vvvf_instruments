@@ -4588,8 +4588,6 @@ struct DatedMessage {
 #define gsscanf sscanf
 #endif
 
-#define NVOICES 12
-
 /*****************************************************************************
 * Helper code for MIDI meta and polyphonic 'nvoices' parsing
 ******************************************************************************/
@@ -7611,7 +7609,7 @@ struct dsp_voice_group {
             ui_interface->openTabBox("Polyphonic");
 
             // Grouped voices UI
-            ui_interface->openVerticalBox(" ");
+            ui_interface->openVerticalBox("Voices");
             ui_interface->addButton("Panic", &fPanic);
             fVoiceGroup->buildUserInterface(ui_interface);
             ui_interface->closeBox();
@@ -8791,7 +8789,7 @@ class uiSlider : public uiComponent, public uiConverter, private juce::Slider::L
         virtual void paint(Graphics& g) override
         {
             if (fType == VSlider || fType == Knob) {
-                g.setColour(Colours::white);
+                g.setColour(Colours::black);
                 g.drawText(getName(), getLocalBounds(), Justification::centredTop);
             }
         }
@@ -9860,7 +9858,7 @@ public:
     void add(Component* comp) override
     {
         // Name of the component is moved in Tab (so removed from component)
-        TabbedComponent::addTab(comp->getName(), Colours::darkgoldenrod, comp, true);
+        TabbedComponent::addTab(comp->getName(), Colours::black, comp, true);
         comp->setName("");
     }
     
@@ -10037,12 +10035,12 @@ class uiBox : public uiBase, public Component
         void paint(Graphics& g) override
         {
             // Fill the box background in gray shades
-            g.setColour(Colours::darkviolet.withAlpha(0.05f));
+            g.setColour(Colours::black.withAlpha(0.05f));
             g.fillRect(getLocalBounds());
 
             // Display the name if it's needed
             if (isNameDisplayed()) {
-                g.setColour(Colours::white);
+                g.setColour(Colours::black);
                 g.drawText(getName(), getLocalBounds().withHeight(kNameHeight), Justification::centred);
             }
         }
@@ -12690,8 +12688,6 @@ class JuceOSCUI : private OSCReceiver, private OSCReceiver::Listener<OSCReceiver
 /**************************  END  JuceOSCUI.h **************************/
 #endif
 
-#define MIDICTRL 1
-
 #if defined(MIDICTRL)
 /************************** BEGIN juce-midi.h **************************/
 /************************************************************************
@@ -13276,7 +13272,7 @@ class mydspSIG0 {
 	
   public:
 	
-	int iRec3[2];
+	int iRec4[2];
 	
   public:
 	
@@ -13797,7 +13793,7 @@ class FaustSynthesiser : public Synthesiser, public dsp_voice_group {
             fSynth.setCurrentPlaybackSampleRate(newRate);
         }
         
-        void renderNextBlock (AudioBuffer<float>& outputAudio,
+        void renderNextBlock (juce::AudioBuffer<float>& outputAudio,
                               const MidiBuffer& inputMidi,
                               int startSample,
                               int numSamples)
@@ -14248,7 +14244,7 @@ FaustPlugInAudioProcessorEditor::~FaustPlugInAudioProcessorEditor()
 //==============================================================================
 void FaustPlugInAudioProcessorEditor::paint (Graphics& g)
 {
-    g.fillAll (Colours::darkgoldenrod);
+    g.fillAll (Colours::black);
 }
 
 void FaustPlugInAudioProcessorEditor::resized()
