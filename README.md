@@ -4,7 +4,7 @@
 # 使い方
 winフォルダ or macフォルダ （使用しているOSに合わせてください）内の
 
-```VVVF Instruments.dll```(VST2) 、可能なら、```VVVF Instruments.vst3```(VST3)
+```VVVF Instruments.(dll/vst)```(VST2) 、可能なら、```VVVF Instruments.vst3```(VST3)
 
 をDAW側で設定してあるVSTプラグインフォルダに入れてください (例: ```C:\Program Files\Steinberg\VSTPlugins\```)。
 
