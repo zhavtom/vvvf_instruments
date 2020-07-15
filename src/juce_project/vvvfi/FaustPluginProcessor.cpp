@@ -4588,8 +4588,6 @@ struct DatedMessage {
 #define gsscanf sscanf
 #endif
 
-#define NVOICES 12
-
 /*****************************************************************************
 * Helper code for MIDI meta and polyphonic 'nvoices' parsing
 ******************************************************************************/
@@ -12690,8 +12688,6 @@ class JuceOSCUI : private OSCReceiver, private OSCReceiver::Listener<OSCReceiver
 /**************************  END  JuceOSCUI.h **************************/
 #endif
 
-#define MIDICTRL 1
-
 #if defined(MIDICTRL)
 /************************** BEGIN juce-midi.h **************************/
 /************************************************************************
@@ -13312,8 +13308,8 @@ class mydspSIG0 {
 	}
 	
 	void instanceInitmydspSIG0(int sample_rate) {
-		for (int l4 = 0; (l4 < 2); l4 = (l4 + 1)) {
-			iRec4[l4] = 0;
+		for (int l5 = 0; (l5 < 2); l5 = (l5 + 1)) {
+			iRec4[l5] = 0;
 		}
 	}
 	
@@ -13330,6 +13326,9 @@ class mydspSIG0 {
 static mydspSIG0* newmydspSIG0() { return (mydspSIG0*)new mydspSIG0(); }
 static void deletemydspSIG0(mydspSIG0* dsp) { delete dsp; }
 
+static float mydsp_faustpower2_f(float value) {
+	return (value * value);
+}
 static float ftbl0mydspSIG0[65536];
 
 #ifndef FAUSTCLASS 
@@ -13350,31 +13349,31 @@ class mydsp : public dsp {
 	FAUSTFLOAT fHslider0;
 	FAUSTFLOAT fHslider1;
 	FAUSTFLOAT fHslider2;
+	FAUSTFLOAT fHslider3;
+	FAUSTFLOAT fHslider4;
+	FAUSTFLOAT fHslider5;
+	float fVec0[2];
 	int fSampleRate;
 	float fConst0;
 	float fConst1;
-	FAUSTFLOAT fHslider3;
-	FAUSTFLOAT fHslider4;
-	float fRec1[2];
-	int iVec0[2];
-	float fConst2;
-	float fRec0[2];
-	FAUSTFLOAT fHslider5;
-	float fConst3;
 	FAUSTFLOAT fHslider6;
 	FAUSTFLOAT fHslider7;
+	float fRec1[2];
+	int iVec1[2];
+	float fConst2;
+	float fRec0[2];
 	FAUSTFLOAT fHslider8;
 	float fRec2[2];
 	FAUSTFLOAT fHslider9;
-	float fConst4;
+	float fConst3;
 	float fRec5[2];
 	float fRec3[2];
 	FAUSTFLOAT fHslider10;
+	float fConst4;
 	float fConst5;
-	float fConst6;
 	int iRec7[2];
-	float fVec1[2];
-	float fConst7;
+	float fVec2[2];
+	float fConst6;
 	float fRec6[2];
 	
  public:
@@ -13454,13 +13453,12 @@ class mydsp : public dsp {
 	virtual void instanceConstants(int sample_rate) {
 		fSampleRate = sample_rate;
 		fConst0 = std::min<float>(192000.0f, std::max<float>(1.0f, float(fSampleRate)));
-		fConst1 = (0.001953125f / fConst0);
+		fConst1 = (0.00390625f / fConst0);
 		fConst2 = (0.0078125f / fConst0);
-		fConst3 = (0.00390625f / fConst0);
-		fConst4 = (20.0f / fConst0);
-		fConst5 = (1.0f / std::tan((6.28318548f / fConst0)));
-		fConst6 = (1.0f / (fConst5 + 1.0f));
-		fConst7 = (1.0f - fConst5);
+		fConst3 = (0.25f / fConst0);
+		fConst4 = (1.0f / std::tan((6.28318548f / fConst0)));
+		fConst5 = (1.0f / (fConst4 + 1.0f));
+		fConst6 = (1.0f - fConst4);
 	}
 	
 	virtual void instanceResetUserInterface() {
@@ -13470,10 +13468,10 @@ class mydsp : public dsp {
 		fHslider1 = FAUSTFLOAT(0.0f);
 		fHslider2 = FAUSTFLOAT(0.0f);
 		fHslider3 = FAUSTFLOAT(0.0f);
-		fHslider4 = FAUSTFLOAT(440.0f);
+		fHslider4 = FAUSTFLOAT(1.0f);
 		fHslider5 = FAUSTFLOAT(0.0f);
 		fHslider6 = FAUSTFLOAT(0.0f);
-		fHslider7 = FAUSTFLOAT(1.0f);
+		fHslider7 = FAUSTFLOAT(440.0f);
 		fHslider8 = FAUSTFLOAT(0.0f);
 		fHslider9 = FAUSTFLOAT(0.0f);
 		fHslider10 = FAUSTFLOAT(0.0f);
@@ -13481,31 +13479,34 @@ class mydsp : public dsp {
 	
 	virtual void instanceClear() {
 		for (int l0 = 0; (l0 < 2); l0 = (l0 + 1)) {
-			fRec1[l0] = 0.0f;
+			fVec0[l0] = 0.0f;
 		}
 		for (int l1 = 0; (l1 < 2); l1 = (l1 + 1)) {
-			iVec0[l1] = 0;
+			fRec1[l1] = 0.0f;
 		}
 		for (int l2 = 0; (l2 < 2); l2 = (l2 + 1)) {
-			fRec0[l2] = 0.0f;
+			iVec1[l2] = 0;
 		}
 		for (int l3 = 0; (l3 < 2); l3 = (l3 + 1)) {
-			fRec2[l3] = 0.0f;
+			fRec0[l3] = 0.0f;
 		}
-		for (int l5 = 0; (l5 < 2); l5 = (l5 + 1)) {
-			fRec5[l5] = 0.0f;
+		for (int l4 = 0; (l4 < 2); l4 = (l4 + 1)) {
+			fRec2[l4] = 0.0f;
 		}
 		for (int l6 = 0; (l6 < 2); l6 = (l6 + 1)) {
-			fRec3[l6] = 0.0f;
+			fRec5[l6] = 0.0f;
 		}
 		for (int l7 = 0; (l7 < 2); l7 = (l7 + 1)) {
-			iRec7[l7] = 0;
+			fRec3[l7] = 0.0f;
 		}
 		for (int l8 = 0; (l8 < 2); l8 = (l8 + 1)) {
-			fVec1[l8] = 0.0f;
+			iRec7[l8] = 0;
 		}
 		for (int l9 = 0; (l9 < 2); l9 = (l9 + 1)) {
-			fRec6[l9] = 0.0f;
+			fVec2[l9] = 0.0f;
+		}
+		for (int l10 = 0; (l10 < 2); l10 = (l10 + 1)) {
+			fRec6[l10] = 0.0f;
 		}
 	}
 	
@@ -13535,36 +13536,41 @@ class mydsp : public dsp {
 		ui_interface->addHorizontalSlider("Sync", &fHslider2, 0.0f, 0.0f, 1.0f, 1.0f);
 		ui_interface->declare(&fButton0, "1", "");
 		ui_interface->addButton("gate", &fButton0);
-		ui_interface->declare(&fHslider4, "2", "");
-		ui_interface->addHorizontalSlider("freq", &fHslider4, 440.0f, 1.0f, 4000.0f, 1.0f);
-		ui_interface->declare(&fHslider6, "3", "");
-		ui_interface->addHorizontalSlider("Bend", &fHslider6, 0.0f, -12.0f, 12.0f, 0.00999999978f);
+		ui_interface->declare(&fHslider7, "2", "");
+		ui_interface->addHorizontalSlider("freq", &fHslider7, 440.0f, 1.0f, 4000.0f, 1.0f);
+		ui_interface->declare(&fHslider8, "3", "");
+		ui_interface->addHorizontalSlider("Bend", &fHslider8, 0.0f, -12.0f, 12.0f, 0.00999999978f);
 		ui_interface->closeBox();
 		ui_interface->declare(0, "1", "");
 		ui_interface->openHorizontalBox("Control");
 		ui_interface->declare(0, "0", "");
 		ui_interface->openVerticalBox("Oscillator");
-		ui_interface->declare(&fHslider8, "0", "");
-		ui_interface->addHorizontalSlider("Polar Invert", &fHslider8, 0.0f, 0.0f, 1.0f, 1.0f);
-		ui_interface->declare(&fHslider7, "1", "");
-		ui_interface->addHorizontalSlider("Pulse Multiply", &fHslider7, 1.0f, 1.0f, 57.0f, 2.0f);
-		ui_interface->declare(&fHslider3, "2", "");
-		ui_interface->addHorizontalSlider("Mod Freq", &fHslider3, 0.0f, 0.0f, 100.0f, 0.100000001f);
+		ui_interface->declare(&fHslider3, "0", "");
+		ui_interface->declare(&fHslider3, "unit", "%");
+		ui_interface->addHorizontalSlider("Pulse Extend", &fHslider3, 0.0f, 0.0f, 100.0f, 0.100000001f);
+		ui_interface->declare(&fHslider4, "1", "");
+		ui_interface->declare(&fHslider4, "unit", "P");
+		ui_interface->addHorizontalSlider("Pulse Mode", &fHslider4, 1.0f, 1.0f, 57.0f, 2.0f);
+		ui_interface->declare(&fHslider6, "2", "");
+		ui_interface->addHorizontalSlider("Mod Freq", &fHslider6, 0.0f, 0.0f, 100.0f, 0.100000001f);
 		ui_interface->declare(&fHslider1, "3", "");
-		ui_interface->addHorizontalSlider("Mod Level", &fHslider1, 0.0f, 0.0f, 100.0f, 0.100000001f);
+		ui_interface->declare(&fHslider1, "unit", "%");
+		ui_interface->addHorizontalSlider("Mod Level", &fHslider1, 0.0f, 0.0f, 200.0f, 0.100000001f);
 		ui_interface->closeBox();
 		ui_interface->declare(0, "1", "");
 		ui_interface->openVerticalBox("Options");
 		ui_interface->declare(&fHslider9, "0", "");
 		ui_interface->addHorizontalSlider("Spectrum Spread", &fHslider9, 0.0f, 0.0f, 1.0f, 1.0f);
 		ui_interface->declare(&fHslider10, "1", "");
-		ui_interface->addHorizontalSlider("Random Mod", &fHslider10, 0.0f, 0.0f, 100.0f, 0.00999999978f);
+		ui_interface->declare(&fHslider10, "unit", "%");
+		ui_interface->addHorizontalSlider("Random Mod", &fHslider10, 0.0f, 0.0f, 100.0f, 0.100000001f);
 		ui_interface->declare(&fHslider5, "2", "");
 		ui_interface->addHorizontalSlider("High Freq Position", &fHslider5, 0.0f, 0.0f, 2.0f, 1.0f);
 		ui_interface->declare(&fHslider0, "3", "");
 		ui_interface->addHorizontalSlider("Pulse Level", &fHslider0, 2.0f, 2.0f, 3.0f, 1.0f);
 		ui_interface->closeBox();
 		ui_interface->declare(&fVslider0, "2", "");
+		ui_interface->declare(&fVslider0, "unit", "%");
 		ui_interface->addVerticalSlider("Gain", &fVslider0, 50.0f, 0.0f, 100.0f, 0.100000001f);
 		ui_interface->closeBox();
 		ui_interface->closeBox();
@@ -13576,60 +13582,61 @@ class mydsp : public dsp {
 		float fSlow0 = (0.00249999994f * (float(fVslider0) * float(fButton0)));
 		float fSlow1 = float(fHslider0);
 		float fSlow2 = float(fHslider2);
-		float fSlow3 = (0.00999999978f * (float(fHslider1) * ((fSlow1 + (2.0f * (fSlow2 * (fSlow1 + -2.0f)))) + -1.0f)));
-		int iSlow4 = int(fSlow2);
-		float fSlow5 = float(fHslider3);
-		float fSlow6 = float(fHslider4);
-		float fSlow7 = (iSlow4 ? fSlow6 : 128.0f);
-		float fSlow8 = ((fConst1 * fSlow5) * fSlow7);
-		float fSlow9 = ((fConst2 * fSlow5) * fSlow7);
-		float fSlow10 = float(fHslider5);
-		int iSlow11 = (fSlow10 > 0.0f);
-		float fSlow12 = float(fHslider8);
-		float fSlow13 = (iSlow4 ? ((fSlow5 * (float(fHslider7) + (2.0f * fSlow12))) * fSlow7) : (128.0f * (fSlow6 * std::pow(2.0f, (0.0833333358f * float(fHslider6))))));
-		float fSlow14 = ((fConst3 / (3.0f - fSlow10)) * fSlow13);
-		float fSlow15 = ((fSlow1 + -1.0f) / ((4.0f * fSlow12) + -1.0f));
-		float fSlow16 = (iSlow11 ? 0.5f : 1.0f);
-		float fSlow17 = (1.0f - fSlow2);
-		float fSlow18 = (float(fHslider9) * fSlow17);
-		float fSlow19 = ((fConst4 * fSlow5) * fSlow7);
-		float fSlow20 = (float(fHslider10) * fSlow17);
+		float fSlow3 = (mydsp_faustpower2_f((0.00999999978f * float(fHslider1))) * ((fSlow1 + (2.0f * (fSlow2 * (fSlow1 + -2.0f)))) + -1.0f));
+		float fSlow4 = float(fHslider4);
+		float fSlow5 = (0.00499999989f * (float(fHslider3) / fSlow4));
+		int iSlow6 = int(fSlow2);
+		float fSlow7 = float(fHslider5);
+		float fSlow8 = float(fHslider6);
+		float fSlow9 = float(fHslider7);
+		float fSlow10 = (iSlow6 ? (0.125f * fSlow9) : 128.0f);
+		float fSlow11 = ((fConst1 * fSlow8) * fSlow10);
+		float fSlow12 = ((fConst2 * fSlow8) * fSlow10);
+		int iSlow13 = (fSlow7 > 0.0f);
+		float fSlow14 = (iSlow6 ? ((fSlow8 * fSlow4) * fSlow10) : (128.0f * (fSlow9 * std::pow(2.0f, (0.0833333358f * float(fHslider8))))));
+		float fSlow15 = ((fConst1 / (3.0f - fSlow7)) * fSlow14);
+		float fSlow16 = (fSlow1 + -1.0f);
+		float fSlow17 = (iSlow13 ? 0.5f : 1.0f);
+		float fSlow18 = (1.0f - fSlow2);
+		float fSlow19 = (float(fHslider9) * fSlow18);
+		float fSlow20 = ((fConst3 * fSlow8) * fSlow10);
+		float fSlow21 = (float(fHslider10) * fSlow18);
 		for (int i = 0; (i < count); i = (i + 1)) {
-			float fTemp0 = (fRec1[1] + fSlow8);
+			fVec0[0] = fSlow7;
+			float fTemp0 = (fRec1[1] + fSlow11);
 			fRec1[0] = (fTemp0 - std::floor(fTemp0));
 			int iTemp1 = (fRec1[0] > 0.5f);
-			iVec0[0] = iTemp1;
-			float fTemp2 = float((iSlow4 ? (iTemp1 == iVec0[1]) : 1));
-			fRec0[0] = (((fRec0[1] - std::floor(fRec0[1])) * fTemp2) + fSlow9);
-			fRec2[0] = ((fTemp2 * (fRec2[1] - std::floor(fRec2[1]))) + fSlow14);
-			float fTemp3 = (iSlow11 ? std::sin((6.28318548f * (fRec2[0] + 0.125f))) : 1.0f);
-			float fTemp4 = (fSlow3 * (std::sin((6.28318548f * (fRec0[0] + 0.333333343f))) * fTemp3));
-			float fTemp5 = (fRec5[1] + fSlow19);
-			fRec5[0] = (fTemp5 - std::floor(fTemp5));
-			fRec3[0] = ((fTemp2 * (fRec3[1] - std::floor(fRec3[1]))) + (fConst2 * (fSlow16 * (fSlow13 + (fSlow18 * float((10 * ((2 * (ftbl0mydspSIG0[int((65536.0f * fRec5[0]))] > 0.0f)) + -1))))))));
+			iVec1[0] = iTemp1;
+			float fTemp2 = float((iSlow6 ? (iTemp1 == iVec1[1]) : (fSlow7 == fVec0[1])));
+			fRec0[0] = (((fRec0[1] - std::floor(fRec0[1])) * fTemp2) + fSlow12);
+			fRec2[0] = ((fTemp2 * (fRec2[1] - std::floor(fRec2[1]))) + fSlow15);
+			float fTemp3 = (iSlow13 ? std::sin((6.28318548f * (fRec2[0] + 0.125f))) : 1.0f);
+			float fTemp4 = (fRec5[1] + fSlow20);
+			fRec5[0] = (fTemp4 - std::floor(fTemp4));
+			fRec3[0] = ((fTemp2 * (fRec3[1] - std::floor(fRec3[1]))) + (fConst2 * (fSlow17 * (fSlow14 + (fSlow19 * float((1000 * ((2 * (ftbl0mydspSIG0[int((65536.0f * fRec5[0]))] > 0.0f)) + -1))))))));
 			iRec7[0] = (1103515245 * (iRec7[1] + 12345));
-			float fTemp6 = float(iRec7[0]);
-			fVec1[0] = fTemp6;
-			fRec6[0] = (fConst6 * ((8.06548994e-10f * (fTemp6 + fVec1[1])) - (fConst7 * fRec6[1])));
-			float fTemp7 = (fSlow15 * std::sin((6.28318548f * (fRec3[0] + (fSlow20 * fRec6[0])))));
-			float fTemp8 = (-2.0f - fTemp7);
-			float fTemp9 = (fSlow1 + (fTemp4 + fTemp8));
-			float fTemp10 = (2.0f - fTemp7);
-			float fTemp11 = ((fTemp4 + fTemp10) - fSlow1);
-			float fTemp12 = (fSlow3 * (fTemp3 * std::sin((6.28318548f * (fRec0[0] + 0.666666687f)))));
-			float fTemp13 = (fSlow1 + (fTemp12 + fTemp8));
-			float fTemp14 = ((fTemp12 + fTemp10) - fSlow1);
-			float fTemp15 = (fSlow0 * (float((((fTemp9 > 0.0f) + (fTemp11 > 0.0f)) - ((fTemp9 < 0.0f) + (fTemp11 < 0.0f)))) - float((((fTemp13 > 0.0f) + (fTemp14 > 0.0f)) - ((fTemp13 < 0.0f) + (fTemp14 < 0.0f))))));
-			output0[i] = FAUSTFLOAT(fTemp15);
-			output1[i] = FAUSTFLOAT(fTemp15);
+			float fTemp5 = float(iRec7[0]);
+			fVec2[0] = fTemp5;
+			fRec6[0] = (fConst5 * ((8.06548994e-10f * (fTemp5 + fVec2[1])) - (fConst6 * fRec6[1])));
+			float fTemp6 = (fSlow16 * std::sin((6.28318548f * (fRec3[0] + (fSlow21 * fRec6[0])))));
+			float fTemp7 = ((fSlow3 * (std::sin((6.28318548f * (fSlow5 + (fRec0[0] + 0.333333343f)))) * fTemp3)) + fTemp6);
+			float fTemp8 = (fSlow1 + (fTemp7 + -2.0f));
+			float fTemp9 = ((fTemp7 + 2.0f) - fSlow1);
+			float fTemp10 = (fTemp6 + (fSlow3 * (fTemp3 * std::sin((6.28318548f * (fSlow5 + (fRec0[0] + 0.666666687f)))))));
+			float fTemp11 = (fSlow1 + (fTemp10 + -2.0f));
+			float fTemp12 = ((fTemp10 + 2.0f) - fSlow1);
+			float fTemp13 = (fSlow0 * (float((((fTemp8 > 0.0f) + (fTemp9 > 0.0f)) - ((fTemp8 < 0.0f) + (fTemp9 < 0.0f)))) - float((((fTemp11 > 0.0f) + (fTemp12 > 0.0f)) - ((fTemp11 < 0.0f) + (fTemp12 < 0.0f))))));
+			output0[i] = FAUSTFLOAT(fTemp13);
+			output1[i] = FAUSTFLOAT(fTemp13);
+			fVec0[1] = fVec0[0];
 			fRec1[1] = fRec1[0];
-			iVec0[1] = iVec0[0];
+			iVec1[1] = iVec1[0];
 			fRec0[1] = fRec0[0];
 			fRec2[1] = fRec2[0];
 			fRec5[1] = fRec5[0];
 			fRec3[1] = fRec3[0];
 			iRec7[1] = iRec7[0];
-			fVec1[1] = fVec1[0];
+			fVec2[1] = fVec2[0];
 			fRec6[1] = fRec6[0];
 		}
 	}
@@ -13646,14 +13653,14 @@ class mydsp : public dsp {
 
 	FAUST_ADDHORIZONTALSLIDER("[0]General/Sync", fHslider2, 0.0f, 0.0f, 1.0f, 1.0f);
 	FAUST_ADDBUTTON("[0]General/gate", fButton0);
-	FAUST_ADDHORIZONTALSLIDER("[0]General/freq", fHslider4, 440.0f, 1.0f, 4000.0f, 1.0f);
-	FAUST_ADDHORIZONTALSLIDER("[0]General/Bend", fHslider6, 0.0f, -12.0f, 12.0f, 0.01f);
-	FAUST_ADDHORIZONTALSLIDER("[1]Control/[0]Oscillator/Polar Invert", fHslider8, 0.0f, 0.0f, 1.0f, 1.0f);
-	FAUST_ADDHORIZONTALSLIDER("[1]Control/[0]Oscillator/Pulse Multiply", fHslider7, 1.0f, 1.0f, 57.0f, 2.0f);
-	FAUST_ADDHORIZONTALSLIDER("[1]Control/[0]Oscillator/Mod Freq", fHslider3, 0.0f, 0.0f, 100.0f, 0.10000000000000001f);
-	FAUST_ADDHORIZONTALSLIDER("[1]Control/[0]Oscillator/Mod Level", fHslider1, 0.0f, 0.0f, 100.0f, 0.10000000000000001f);
+	FAUST_ADDHORIZONTALSLIDER("[0]General/freq", fHslider7, 440.0f, 1.0f, 4000.0f, 1.0f);
+	FAUST_ADDHORIZONTALSLIDER("[0]General/Bend", fHslider8, 0.0f, -12.0f, 12.0f, 0.01f);
+	FAUST_ADDHORIZONTALSLIDER("[1]Control/[0]Oscillator/Pulse Extend", fHslider3, 0.0f, 0.0f, 100.0f, 0.10000000000000001f);
+	FAUST_ADDHORIZONTALSLIDER("[1]Control/[0]Oscillator/Pulse Mode", fHslider4, 1.0f, 1.0f, 57.0f, 2.0f);
+	FAUST_ADDHORIZONTALSLIDER("[1]Control/[0]Oscillator/Mod Freq", fHslider6, 0.0f, 0.0f, 100.0f, 0.10000000000000001f);
+	FAUST_ADDHORIZONTALSLIDER("[1]Control/[0]Oscillator/Mod Level", fHslider1, 0.0f, 0.0f, 200.0f, 0.10000000000000001f);
 	FAUST_ADDHORIZONTALSLIDER("[1]Control/[1]Options/Spectrum Spread", fHslider9, 0.0f, 0.0f, 1.0f, 1.0f);
-	FAUST_ADDHORIZONTALSLIDER("[1]Control/[1]Options/Random Mod", fHslider10, 0.0f, 0.0f, 100.0f, 0.01f);
+	FAUST_ADDHORIZONTALSLIDER("[1]Control/[1]Options/Random Mod", fHslider10, 0.0f, 0.0f, 100.0f, 0.10000000000000001f);
 	FAUST_ADDHORIZONTALSLIDER("[1]Control/[1]Options/High Freq Position", fHslider5, 0.0f, 0.0f, 2.0f, 1.0f);
 	FAUST_ADDHORIZONTALSLIDER("[1]Control/[1]Options/Pulse Level", fHslider0, 2.0f, 2.0f, 3.0f, 1.0f);
 	FAUST_ADDVERTICALSLIDER("[1]Control/Gain", fVslider0, 50.0f, 0.0f, 100.0f, 0.10000000000000001f);
@@ -13661,14 +13668,14 @@ class mydsp : public dsp {
 	#define FAUST_LIST_ACTIVES(p) \
 		p(HORIZONTALSLIDER, Sync, "[0]General/Sync", fHslider2, 0.0f, 0.0f, 1.0f, 1.0f) \
 		p(BUTTON, gate, "[0]General/gate", fButton0, 0.0, 0.0, 1.0, 1.0) \
-		p(HORIZONTALSLIDER, freq, "[0]General/freq", fHslider4, 440.0f, 1.0f, 4000.0f, 1.0f) \
-		p(HORIZONTALSLIDER, Bend, "[0]General/Bend", fHslider6, 0.0f, -12.0f, 12.0f, 0.01f) \
-		p(HORIZONTALSLIDER, Polar_Invert, "[1]Control/[0]Oscillator/Polar Invert", fHslider8, 0.0f, 0.0f, 1.0f, 1.0f) \
-		p(HORIZONTALSLIDER, Pulse_Multiply, "[1]Control/[0]Oscillator/Pulse Multiply", fHslider7, 1.0f, 1.0f, 57.0f, 2.0f) \
-		p(HORIZONTALSLIDER, Mod_Freq, "[1]Control/[0]Oscillator/Mod Freq", fHslider3, 0.0f, 0.0f, 100.0f, 0.10000000000000001f) \
-		p(HORIZONTALSLIDER, Mod_Level, "[1]Control/[0]Oscillator/Mod Level", fHslider1, 0.0f, 0.0f, 100.0f, 0.10000000000000001f) \
+		p(HORIZONTALSLIDER, freq, "[0]General/freq", fHslider7, 440.0f, 1.0f, 4000.0f, 1.0f) \
+		p(HORIZONTALSLIDER, Bend, "[0]General/Bend", fHslider8, 0.0f, -12.0f, 12.0f, 0.01f) \
+		p(HORIZONTALSLIDER, Pulse_Extend, "[1]Control/[0]Oscillator/Pulse Extend", fHslider3, 0.0f, 0.0f, 100.0f, 0.10000000000000001f) \
+		p(HORIZONTALSLIDER, Pulse_Mode, "[1]Control/[0]Oscillator/Pulse Mode", fHslider4, 1.0f, 1.0f, 57.0f, 2.0f) \
+		p(HORIZONTALSLIDER, Mod_Freq, "[1]Control/[0]Oscillator/Mod Freq", fHslider6, 0.0f, 0.0f, 100.0f, 0.10000000000000001f) \
+		p(HORIZONTALSLIDER, Mod_Level, "[1]Control/[0]Oscillator/Mod Level", fHslider1, 0.0f, 0.0f, 200.0f, 0.10000000000000001f) \
 		p(HORIZONTALSLIDER, Spectrum_Spread, "[1]Control/[1]Options/Spectrum Spread", fHslider9, 0.0f, 0.0f, 1.0f, 1.0f) \
-		p(HORIZONTALSLIDER, Random_Mod, "[1]Control/[1]Options/Random Mod", fHslider10, 0.0f, 0.0f, 100.0f, 0.01f) \
+		p(HORIZONTALSLIDER, Random_Mod, "[1]Control/[1]Options/Random Mod", fHslider10, 0.0f, 0.0f, 100.0f, 0.10000000000000001f) \
 		p(HORIZONTALSLIDER, High_Freq_Position, "[1]Control/[1]Options/High Freq Position", fHslider5, 0.0f, 0.0f, 2.0f, 1.0f) \
 		p(HORIZONTALSLIDER, Pulse_Level, "[1]Control/[1]Options/Pulse Level", fHslider0, 2.0f, 2.0f, 3.0f, 1.0f) \
 		p(VERTICALSLIDER, Gain, "[1]Control/Gain", fVslider0, 50.0f, 0.0f, 100.0f, 0.10000000000000001f) \
