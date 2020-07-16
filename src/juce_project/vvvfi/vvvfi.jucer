@@ -14,8 +14,8 @@
               pluginAAXDisableBypass="0" pluginAAXDisableMultiMono="0" enableIAA="0">
   <MAINGROUP id="DIThxi" name="VVVF_Instruments">
     <GROUP id="{3EA8B881-7A5A-9E29-6E83-82528C15E424}" name="Source">
-      <FILE id="BecAMR" name="FaustPluginProcessor.cpp" compile="1" resource="0"
-            file="FaustPluginProcessor.cpp"/>
+      <FILE id="IgnCkZ" name="FaustPluginProcessor.cpp" compile="1" resource="0"
+            file="Source/FaustPluginProcessor.cpp"/>
     </GROUP>
   </MAINGROUP>
   <EXPORTFORMATS>

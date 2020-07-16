@@ -73,9 +73,9 @@
 			isa = PBXBuildFile;
 			fileRef = 2BA521195DD7816D148FA966;
 		};
-		A19CFA3445C4A1AD4520DB26 = {
+		0582299609807AB630EB8D15 = {
 			isa = PBXBuildFile;
-			fileRef = 15CB6282CC12D1680BC22817;
+			fileRef = F6C825925065277E78A77A82;
 		};
 		D9FE958C37795D89F855BC5E = {
 			isa = PBXBuildFile;
@@ -170,12 +170,12 @@
 			path = System/Library/Frameworks/CoreAudioKit.framework;
 			sourceTree = SDKROOT;
 		};
-		15CB6282CC12D1680BC22817 = {
+		148CF8CFFD8352CBCFA5EFBB = {
 			isa = PBXFileReference;
-			lastKnownFileType = sourcecode.cpp.cpp;
-			name = FaustPluginProcessor.cpp;
-			path = ../../FaustPluginProcessor.cpp;
-			sourceTree = "SOURCE_ROOT";
+			lastKnownFileType = file;
+			name = "juce_opengl";
+			path = "~/Documents/JUCE/modules/juce_opengl";
+			sourceTree = "<absolute>";
 		};
 		19942051863B11084EF64BA8 = {
 			isa = PBXFileReference;
@@ -224,6 +224,13 @@
 			lastKnownFileType = file.nib;
 			name = RecentFilesMenuTemplate.nib;
 			path = RecentFilesMenuTemplate.nib;
+			sourceTree = "SOURCE_ROOT";
+		};
+		39E11FF27ED7C442134AADA5 = {
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.h;
+			name = AppConfig.h;
+			path = ../../JuceLibraryCode/AppConfig.h;
 			sourceTree = "SOURCE_ROOT";
 		};
 		3E5C4E7039B28EC9B627A432 = {
@@ -309,20 +316,6 @@
 			includeInIndex = 0;
 			path = "VVVF Instruments.app";
 			sourceTree = "BUILT_PRODUCTS_DIR";
-		};
-		148CF8CFFD8352CBCFA5EFBB = {
-			isa = PBXFileReference;
-			lastKnownFileType = file;
-			name = "juce_opengl";
-			path = "~/Documents/JUCE/modules/juce_opengl";
-			sourceTree = "<absolute>";
-		};
-		39E11FF27ED7C442134AADA5 = {
-			isa = PBXFileReference;
-			lastKnownFileType = sourcecode.c.h;
-			name = AppConfig.h;
-			path = ../../JuceLibraryCode/AppConfig.h;
-			sourceTree = "SOURCE_ROOT";
 		};
 		4ADA6BC67449177F58E4B99B = {
 			isa = PBXFileReference;
@@ -527,6 +520,13 @@
 			path = ../../JuceLibraryCode/JucePluginDefines.h;
 			sourceTree = "SOURCE_ROOT";
 		};
+		F6C825925065277E78A77A82 = {
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.cpp.cpp;
+			name = FaustPluginProcessor.cpp;
+			path = ../../Source/FaustPluginProcessor.cpp;
+			sourceTree = "SOURCE_ROOT";
+		};
 		F8881A8F9802A491C2D7D752 = {
 			isa = PBXFileReference;
 			lastKnownFileType = sourcecode.cpp.objcpp;
@@ -544,7 +544,7 @@
 		C9000A1A3560130A74908685 = {
 			isa = PBXGroup;
 			children = (
-				15CB6282CC12D1680BC22817,
+				F6C825925065277E78A77A82,
 			);
 			name = Source;
 			sourceTree = "<group>";
@@ -1457,7 +1457,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A19CFA3445C4A1AD4520DB26,
+				0582299609807AB630EB8D15,
 				D9FE958C37795D89F855BC5E,
 				273C6D909ED11FF2D1B8F4C5,
 				046C0D3DED968AD1C89F0CE0,

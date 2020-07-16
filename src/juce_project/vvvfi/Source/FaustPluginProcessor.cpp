@@ -39,7 +39,7 @@ Compilation options: -lang cpp -scal -ftz 0
 #define JUCE_CORE_INCLUDE_NATIVE_HEADERS 1
 #endif
 
-#include "JuceLibraryCode/JuceHeader.h"
+#include "../JuceLibraryCode/JuceHeader.h"
 
 /************************** BEGIN MapUI.h **************************/
 /************************************************************************
@@ -8266,7 +8266,7 @@ struct dsp_poly_factory : public dsp_factory {
 
 #include <stack>
 
-#include "JuceLibraryCode/JuceHeader.h"
+#include "../JuceLibraryCode/JuceHeader.h"
 
 
 // Definition of the standard size of the different elements
@@ -10309,7 +10309,7 @@ class JuceGUI : public GUI, public MetaDataUI, public Component
 #ifndef JuceParameterUI_H
 #define JuceParameterUI_H
 
-#include "JuceLibraryCode/JuceHeader.h"
+#include "../JuceLibraryCode/JuceHeader.h"
 
 
 // Link AudioParameterBool with on/off parameter
@@ -10465,7 +10465,7 @@ class JuceParameterUI : public GUI, public PathBuilder {
 #ifndef JuceStateUI_H
 #define JuceStateUI_H
 
-#include "JuceLibraryCode/JuceHeader.h"
+#include "../JuceLibraryCode/JuceHeader.h"
 
 
 // A class to save/restore DSP state using JUCE, which also set default values at construction time.
@@ -11999,7 +11999,7 @@ class SoundUI : public GenericUI
 #ifndef __juce_osc__
 #define __juce_osc__
  
-#include "JuceLibraryCode/JuceHeader.h"
+#include "../JuceLibraryCode/JuceHeader.h"
 
 /************************** BEGIN APIUI.h **************************/
 /************************************************************************
